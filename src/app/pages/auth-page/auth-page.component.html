@@ -1,13 +1,13 @@
 <section class="main__container container">
     <h2 class="main__subtitle">Sign up</h2>
-    <form class="main__form">
+    <form class="main__form" [formGroup]="form" (ngSubmit)="login()">
         <div class="form__login">
             <p class="form__text">Username</p>
-            <input type="text" class="form__input">
+            <input type="text" class="form__input" formControlName="email">
         </div>
         <div class="form__login">
             <p class="form__text">Password</p>
-            <input type="text" class="form__input">
+            <input type="text" class="form__input" formControlName="password">
         </div>
 
         <ul class="social-media">
