@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
+
+
+.main {
+  &__container {
+    box-shadow: rgb(42, 208, 245) 0px 0px 25px 0px;
+    width: 40%;
+    height: 340px;
+    padding-top: 20px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+}
+
+.form {
+  &__login {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+  }
+
+  &__text {
+    margin-right: 10px;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+  &__button {
+    cursor: pointer;
+    text-align: center;
+    border: 5px solid rgb(23, 130, 238);
+    height: 40px;
+    width: 100px;
+    transition-delay: 0;
+    transition: all 0.5s;
+    &:hover {
+      transition-delay: 0;
+      transition: all 0.5s;
+      border: 2px solid rgb(23, 130, 238);
+      width: 120px;
+    }
+    &:active {
+      transition-delay: 0;
+      transition: all 0.2s;
+      border: 2px solid red;
+    }
+  }
+}
+
+.social-media {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  &__link {
+    cursor: pointer;
+    height: 50px;
+  }
+
+  &__pic {
+    height: inherit;
+  }
+}
