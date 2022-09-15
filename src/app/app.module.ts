@@ -11,13 +11,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from '@pages/auth-page/auth-page.component';
 import { HeaderComponent } from '@core/components/header/header.component';
 import { LoginComponent } from './pages/login/login.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
