@@ -1,6 +1,5 @@
 .header {
-
-  &__logo{
+  &__logo {
     width: auto;
     height: 100px;
   }
@@ -45,7 +44,13 @@
     }
   }
 
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__button {
+    margin-bottom: 10px;
     border-radius: 5px;
     padding-top: 8px;
     text-align: center;

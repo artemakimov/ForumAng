@@ -1,11 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap');
-
-
 .main {
+    font-family: "Oswald", sans-serif;
+    background-color: #fff;
   &__container {
     box-shadow: rgb(42, 208, 245) 0px 0px 25px 0px;
     width: 40%;
-    height: 340px;
+    height: 500px;
     padding-top: 20px;
   }
 
@@ -17,7 +16,7 @@
   }
 
   &__subtitle {
-    text-align: center;
+
     font-size: 30px;
     text-transform: uppercase;
     text-align: center;
@@ -54,6 +53,7 @@
   }
 
   &__button {
+    color:#212529;
     cursor: pointer;
     text-align: center;
     border: 5px solid rgb(23, 130, 238);
@@ -76,17 +76,17 @@
 }
 
 .social-media {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 20px;
-
-  &__link {
-    cursor: pointer;
-    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+  
+    &__link {
+      cursor: pointer;
+      height: 50px;
+    }
+  
+    &__pic {
+      height: inherit;
+    }
   }
-
-  &__pic {
-    height: inherit;
-  }
-}

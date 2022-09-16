@@ -22,11 +22,7 @@
       "es2020",
       "dom"
     ],
-    "paths": {
-      "@core/*": ["./src/app/core/*"],
-      "@pages/*": ["./src/app/pages/*"]
-    },
-    "strictNullChecks": false
+    "strictPropertyInitialization": false
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

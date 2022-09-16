@@ -1,26 +1,33 @@
-<section class="main__container container">
-    <h2 class="main__subtitle">Sign up</h2>
-    <form class="main__form" [formGroup]="form" (ngSubmit)="login()">
-        <div class="form__login">
-            <p class="form__text">Username</p>
-            <input type="text" class="form__input" formControlName="email">
-        </div>
-        <div class="form__login">
-            <p class="form__text">Password</p>
-            <input type="text" class="form__input" formControlName="password">
-        </div>
+<section class="main">
+    <div class="main__container container">
+        <h2 class="main__subtitle">Sign up</h2>
+        <form class="main__form" [formGroup]="registrationFormValues" (ngSubmit)="ThenActive()">
+            <div class="form__login">
+                <label class="form__text" for="user">Email</label>
+                <input type="text" class="form__input" id="user" formControlName="email">
+            </div>
 
-        <ul class="social-media">
-            <li class="social-media__link">
-                <img src="../../../assets/Facebook_Logo.png" alt="social media" class="social-media__pic">
-            </li>
-            <li class="social-media__link">
-                <img src="../../../assets/Google__G__Logo.png" alt="social media" class="social-media__pic">
-            </li>
-            <li class="social-media__link">
-                <img src="../../../assets/VK_logo_.png" alt="social media" class="social-media__pic">
-            </li>
-        </ul>
-        <button class="form__button">Sign up</button>
-    </form>
+            <div class="form__error" *ngIf="IsItRight('email')">
+                Email entered incorrectly.
+            </div>
+
+            <div class="form__login">
+                <label class="form__text" for="password">Password</label>
+                <input class="form__input" id="password" type="password" formControlName="password">
+            </div>
+
+            <div class="auth__error" *ngIf="IsItRight('password')">
+                Password must be 5-10 characters.
+            </div>
+
+            <div class="auth__error" *ngIf="errorMessage">
+                {{errorMessage}}
+            </div>
+
+
+            <button type="submit" class="form__button" [disabled]="registrationFormValues.invalid || IsButtonSubmitted">
+                Sign Up
+            </button>
+        </form>
+    </div>
 </section>
