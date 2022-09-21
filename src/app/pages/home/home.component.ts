@@ -1,23 +1,22 @@
-import { Component,OnInit} from '@angular/core';
-import { AuthModuleService } from 'src/app/core/service/login.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/service/auth.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  constructor(public authService: AuthService, public router: Router) {}
 
+  ngOnInit(): void {}
 
-  constructor(
-    public AuthModuleService: AuthModuleService
-  ) { }
-
-  ngOnInit(): void {
-  }
+  @Output() isUserLogout = new EventEmitter();
 
   logout() {
-    this.AuthModuleService.signOut();
+    this.authService.signOut();
+    this.isUserLogout.emit();
+    this.router.navigate(['login']);
   }
-
 }

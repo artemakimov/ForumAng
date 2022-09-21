@@ -1,6 +1,6 @@
 <section class="main">
     <div class="main__container container">
-        <h2 class="main__subtitle">Login</h2>
+        <h2 class="main__subtitle">Sign up</h2>
         <form class="main__form" [formGroup]="formValue" (ngSubmit)="ThenActive()">
             <div class="form__login">
                 <label class="form__text" for="user">Email</label>
@@ -25,7 +25,7 @@
             </div>
 
             <div class="form__text">
-                Also you can login by
+                Also you can sign up by
             </div>
 
             <ul class="social-media">
@@ -44,7 +44,7 @@
             </ul>
 
             <button class="form__button" type="submit" [disabled]="formValue.invalid || isButtonSubmitted">
-                Login
+                Sign up
             </button>
         </form>
     </div>

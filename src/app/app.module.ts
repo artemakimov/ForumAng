@@ -10,17 +10,18 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
-import { AuthComponent } from './pages/auth-page/auth-page.component';
-import { LoginComponent  } from './pages/login/login.component';
-import { AuthModuleService } from './core/service/login.service';
+import { RegistrationComponent } from './pages/reg/reg.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthService } from './core/service/auth.service';
 import { HomeComponent } from './pages/home/home.component';
+import { AuthGuardModule } from './core/guard/auth.guard';
 
 @NgModule({
   declarations: [
-    AuthComponent,
+    LoginComponent,
+    RegistrationComponent,
     AppComponent,
     HeaderComponent,
-    LoginComponent ,
     HomeComponent,
   ],
   imports: [
@@ -33,7 +34,7 @@ import { HomeComponent } from './pages/home/home.component';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
   ],
-  providers: [AuthModuleService],
-  bootstrap: [AppComponent]
+  providers: [AuthGuardModule, AuthService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

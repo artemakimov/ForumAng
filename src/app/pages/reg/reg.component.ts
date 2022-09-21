@@ -1,36 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/core/service/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  selector: 'app-reg',
+  templateUrl: './reg.component.html',
+  styleUrls: ['./reg.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class RegistrationComponent implements OnInit {
   public formValue: FormGroup;
   public isButtonSubmitted = false;
+  public isUserLoggedIn = false;
   public errorMessage: string = null;
 
   constructor(
     private formBuilder: FormBuilder,
     public authService: AuthService,
-    public afAuth: AngularFireAuth,
     public router: Router
   ) {}
 
   ngOnInit(): void {
     this.initForm();
-  }
-
-  private initForm() {
-    this.formValue = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-
-      password: ['', [Validators.required]],
-    });
   }
 
   public ThenActive() {
@@ -44,17 +35,18 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService
-      .signIn(controls['email'].value, controls['password'].value)
+      .signUp(controls['email'].value, controls['password'].value)
       .then(() => {
         this.formValue.reset();
-        this.router.navigate(['/home']);
+        this.router.navigate(['home']);
       })
       .catch((e: Error) => {
         if (
           e.message ==
-          'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth / user - not - found).'
+          'Firebase: The email address is already in use by another account. (auth/email-already-in-use).'
         ) {
-          this.errorMessage = 'There is no such user!';
+          this.errorMessage =
+            'The email address is already in use by another account';
         } else if (
           e.message ==
           'Firebase: The email address is badly formatted. (auth/invalid-email).'
@@ -64,12 +56,25 @@ export class LoginComponent implements OnInit {
           this.errorMessage = 'Unknown error';
         }
       });
-
-    this.formValue.reset();
   }
 
-  public IsItRight(controlName: string): boolean {
-    const control = this.formValue.controls[controlName];
+  private initForm() {
+    this.formValue = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(10),
+        ],
+      ],
+    });
+  }
+
+  public IsItRight(name: string): boolean {
+    const control = this.formValue.controls[name];
 
     return control.invalid && control.touched;
   }
@@ -79,10 +84,10 @@ export class LoginComponent implements OnInit {
   ): void {
     const controls = this.formValue.controls;
 
-    Object.keys(controls).forEach((name) => controls[name].markAsUntouched());
+    Object.keys(controls).forEach((value) => controls[value].markAsUntouched());
 
     provider.then((result: firebase.default.auth.UserCredential) => {
-      this.router.navigate(['/home']);
+      this.router.navigate(['home']);
     });
   }
 
