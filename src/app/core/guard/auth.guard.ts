@@ -1,32 +1,20 @@
-import { Injectable } from '@angular/core';
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  Router,
-} from '@angular/router';
-import { Observable, map } from 'rxjs';
-import { AuthService } from 'src/app/core/service/auth.service';
+import { Injectable } from "@angular/core";
+import { CanActivate, Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators'
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class AuthGuardModule implements CanActivate {
-  constructor(public router: Router, public authService: AuthService) {}
+  constructor(private router: Router, private afAuth: AngularFireAuth) { }
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.authService.authGuardPipe.pipe(
-      map((user) => {
-        if (user) {
-          return true;
-        }
-
-        this.router.navigate(['/login']);
-        return false;
-      })
-    );
+  canActivate(): Observable<boolean> {
+    return this.afAuth.authState.pipe(map((user)=>{
+      if(user) {
+        return true;
+      }
+      this.router.navigate(['/login'])
+      return false;
+    }))
   }
 }

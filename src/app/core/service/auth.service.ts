@@ -62,5 +62,6 @@ export class AuthService {
     return this.authLogin(new auth.GithubAuthProvider());
   }
 
+  
 
 }
