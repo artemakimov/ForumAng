@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/forumapp",
+    "public": "dist/forumang",
     "ignore": [
       "firebase.json",
       "**/.*",
