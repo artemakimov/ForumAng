@@ -25,6 +25,12 @@
 }
 
 .form {
+    &__error{
+      border-radius: 6px;
+      border: #212529 2px;
+      background-color: #212529;
+      color: #ff0000;
+    }
   &__login {
     display: flex;
     margin-bottom: 10px;
@@ -77,6 +83,8 @@
       background-color: #ff0000;
       cursor: not-allowed;
     }
+
+
   }
 }
 

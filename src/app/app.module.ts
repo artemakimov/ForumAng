@@ -14,7 +14,8 @@ import { RegistrationComponent } from './pages/reg/reg.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthService } from './core/service/auth.service';
 import { HomeComponent } from './pages/home/home.component';
-import { AuthGuardModule } from './core/guard/auth.guard';
+import { HomeGuard } from './core/guard/home.guard';
+import { AuthGuard } from './core/guard/auth.guard';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { AuthGuardModule } from './core/guard/auth.guard';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
   ],
-  providers: [AuthGuardModule, AuthService],
+  providers: [HomeGuard, AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

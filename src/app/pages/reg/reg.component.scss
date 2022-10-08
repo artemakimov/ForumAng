@@ -24,6 +24,11 @@
 }
 
 .form {
+  
+      &__error{
+        color: #ff0000;
+      }
+
   &__login {
     display: flex;
     margin-bottom: 10px;
@@ -76,6 +81,7 @@
       background-color: #ff0000;
       cursor: not-allowed;
     }
+
   }
 }
 

@@ -73,7 +73,7 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  public IsItRight(name: string): boolean {
+  public IsControlValid(name: string): boolean {
     const control = this.formValue.controls[name];
 
     return control.invalid && control.touched;

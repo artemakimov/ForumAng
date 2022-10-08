@@ -7,7 +7,7 @@
                 <input type="text" class="form__input" id="user" formControlName="email">
             </div>
 
-            <div class="form__error" *ngIf="IsItRight('email')">
+            <div class="form__error" *ngIf="IsControlValid('email')">
                 Email entered incorrectly.
             </div>
 
@@ -16,13 +16,13 @@
                 <input class="form__input" id="password" type="password" formControlName="password">
             </div>
 
-            <div class="form__error" *ngIf="IsItRight('password')">
+            <div class="form__error" *ngIf="IsControlValid('password')">
                 Password must be 5-10 characters.
             </div>
 
-            <div class="form__error" *ngIf="errorMessage">
+            <p class="form__error" *ngIf="errorMessage">
                 {{errorMessage}}
-            </div>
+            </p>
 
             <div class="form__text">
                 Also you can sign up by

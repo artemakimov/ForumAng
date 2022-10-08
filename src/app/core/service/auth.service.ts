@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthProvider } from 'firebase/auth';
 import { Observable, map } from 'rxjs';
+import firebase from 'firebase/compat';
+import User = firebase.User;
+import UserCredential = firebase.auth.UserCredential
 
 @Injectable({
   providedIn: 'root',
@@ -13,9 +15,9 @@ export class AuthService {
   public currentUserEmail: string;
   public currentUserId: string;
   public authGuardPipe: Observable<auth.User>;
+  public UserEmail: string;
 
   constructor(
-    public ngFireStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth
   ) {
     this.authGuardPipe = ngFireAuth.authState;
@@ -31,14 +33,14 @@ export class AuthService {
   public signIn(
     email: string,
     password: string
-  ): Promise<firebase.default.auth.UserCredential> {
+  ): Promise<UserCredential> {
     return this.ngFireAuth.signInWithEmailAndPassword(email, password);
   }
 
   public signUp(
     email: string,
     password: string
-  ): Promise<firebase.default.auth.UserCredential> {
+  ): Promise<UserCredential> {
     return this.ngFireAuth.createUserWithEmailAndPassword(email, password);
   }
 
@@ -50,18 +52,20 @@ export class AuthService {
     this.ngFireAuth.signOut();
   }
 
-  public googleAuth(): Promise<firebase.default.auth.UserCredential> {
+  public googleAuth(): Promise<UserCredential> {
     return this.authLogin(new auth.GoogleAuthProvider());
   }
 
-  public facebookAuth(): Promise<firebase.default.auth.UserCredential> {
+  public facebookAuth(): Promise<UserCredential> {
     return this.authLogin(new auth.FacebookAuthProvider());
   }
 
-  public githubAuth(): Promise<firebase.default.auth.UserCredential> {
+  public githubAuth(): Promise<UserCredential> {
     return this.authLogin(new auth.GithubAuthProvider());
   }
 
-  
+  public getAuthState(): Observable<User>{
+    return this.ngFireAuth.authState;
+  }
 
 }
