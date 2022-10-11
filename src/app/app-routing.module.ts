@@ -5,8 +5,10 @@ import { RegistrationComponent } from './pages/reg/reg.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HomeGuard } from './core/guard/home.guard';
 import { AuthGuard } from './core/guard/auth.guard';
+import {QuestionPageComponent} from './pages/question-page/question-page.component'
 
 const routes: Routes = [
+  {path: 'question-page', component: QuestionPageComponent, canActivate: [HomeGuard]},
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
   { path: 'sign-up', component: RegistrationComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent, canActivate: [HomeGuard] },

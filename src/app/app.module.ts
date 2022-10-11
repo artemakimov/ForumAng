@@ -16,6 +16,7 @@ import { AuthService } from './core/service/auth.service';
 import { HomeComponent } from './pages/home/home.component';
 import { HomeGuard } from './core/guard/home.guard';
 import { AuthGuard } from './core/guard/auth.guard';
+import { QuestionPageComponent } from './pages/question-page/question-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { AuthGuard } from './core/guard/auth.guard';
     AppComponent,
     HeaderComponent,
     HomeComponent,
+    QuestionPageComponent,
   ],
   imports: [
     BrowserModule,

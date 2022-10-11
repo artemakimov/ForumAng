@@ -1,0 +1,47 @@
+
+<section class="container question-container">
+    <h2 class="question-container__title">New question</h2>
+    <form action="" class="form">
+        <div class="form__container">
+            <label for="title" class="form__text">
+                Title
+                <input type="text" id="title" class="form__input">
+            </label>
+        </div>
+        <div class="form__container">
+            <label for="text" class="form__text">
+                Text
+                <textarea name="text" id="text" class="form__textarea"></textarea>
+            </label>
+        </div>
+        <div class="form__container">
+            <label for="tags" class="form__text">
+                Tags:
+                <ul>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Junior
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Middle 
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="checkbox">
+                            Senior
+                        </label>
+                    </li>
+                </ul>
+            </label>
+        </div>
+        <div>
+            <button>Submit</button>
+            <a routerLink="home">Cancel</a>
+        </div>
+    </form> 
+</section>

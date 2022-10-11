@@ -7,7 +7,7 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public flag = true;
+  public isLoggedIn = false;
   public currentUserEmail:string;
 
   constructor(
@@ -17,15 +17,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.authServise.getAuthState().subscribe(user=>
       {
-        this.currentUserEmail = user.email;
+        this.isLoggedIn = !!user;
+        if(user){
+          this.currentUserEmail = user.email;
+        }
       })
-  }
-
-  public areLogin(){
-    if(this.currentUserEmail != null){
-      this.flag = false
-      return this.flag;
-    }
-    return true;
   }
 }
