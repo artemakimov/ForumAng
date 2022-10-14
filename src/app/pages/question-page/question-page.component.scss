@@ -9,10 +9,21 @@
 
 .form{
     padding-bottom: 20px;
-    &__container{
+    &__container:hover{
+        display: flex;
         width: 100%;
-        justify-content: space-between;
         font-size: 20px;
         margin-bottom: 20px;
+        transition: 0.5s;
     }
+
+    &__input, &__textarea{
+        justify-content: space-between;
+        margin-left: 10px;
+    }
+
+    &__text{
+        justify-content: center;
+    }
+
 }

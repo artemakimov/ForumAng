@@ -1,17 +1,17 @@
 
 <section class="container question-container">
     <h2 class="question-container__title">New question</h2>
-    <form action="" class="form">
+    <form action="" class="form" [formGroup]="form" (ngSubmit)="post()">
         <div class="form__container">
             <label for="title" class="form__text">
                 Title
-                <input type="text" id="title" class="form__input">
+                <input type="text" id="title" class="form__input" formControlName="title">
             </label>
         </div>
         <div class="form__container">
             <label for="text" class="form__text">
                 Text
-                <textarea name="text" id="text" class="form__textarea"></textarea>
+                <textarea name="text" id="text" class="form__textarea" formControlName="text"></textarea>
             </label>
         </div>
         <div class="form__container">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-question-page',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./question-page.component.scss']
 })
 export class QuestionPageComponent implements OnInit {
-
-  constructor() { }
+  public form: FormGroup;
+  
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      title: ['', [Validators.required]],
+      text: ['', [Validators.required]]
+    })
   }
 
+  post() {
+    console.log(this.form);
+  }
 }
