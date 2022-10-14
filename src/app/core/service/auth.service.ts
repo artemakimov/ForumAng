@@ -48,8 +48,8 @@ export class AuthService {
     return this.ngFireAuth.signInWithPopup(provider);
   }
 
-  public signOut(): void {
-    this.ngFireAuth.signOut();
+  public signOut(): Promise<void> {
+    return this.ngFireAuth.signOut();
   }
 
   public googleAuth(): Promise<UserCredential> {

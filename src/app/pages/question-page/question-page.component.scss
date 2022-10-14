@@ -9,21 +9,66 @@
 
 .form{
     padding-bottom: 20px;
-    &__container:hover{
-        display: flex;
-        width: 100%;
-        font-size: 20px;
-        margin-bottom: 20px;
-        transition: 0.5s;
+    
+    &__container{
+        transition: 0.5s all;
+        margin-bottom: 10px;
+        &:hover{
+            display: flex;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
     }
 
+
     &__input, &__textarea{
+        width: 100%;
         justify-content: space-between;
-        margin-left: 10px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f8f8;
+        font-size: 16px;
+        resize: none;
     }
 
     &__text{
         justify-content: center;
+    }
+
+    &__button{
+        border: 3px solid rgb(0, 0, 0);
+        border-radius: 20px;
+        width: 100px;
+        height: 50px;
+        margin-right: 20px;
+        background-color: rgb(113, 208, 229);
+        cursor: pointer;
+        transition: 0.5s all;
+        font-size: 20px;
+        &:hover{
+            border: 1px solid rgb(0, 0, 0);
+            border-radius: 2px;
+            background: linear-gradient(90deg, rgba(19,117,241,1) 0%, rgba(55,215,179,1) 100%);
+        }
+    }
+    &__cancel-button{
+        border: 3px solid rgb(0, 0, 0);
+        border-radius: 20px;
+        padding: 7px;
+        background-color: rgb(113, 208, 229);
+        cursor: pointer;
+        transition: 0.5s all;
+        text-decoration: none;
+        color: #000;
+        font-size: 20px;
+        &:hover{
+            color: aqua;
+            border: 6px solid rgb(0, 0, 0);
+            border-radius: 2px;
+            background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(215,55,55,1) 100%);
+        }
     }
 
 }

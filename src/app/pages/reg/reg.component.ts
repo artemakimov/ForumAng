@@ -24,7 +24,7 @@ export class RegistrationComponent implements OnInit {
     this.initForm();
   }
 
-  public ThenActive() {
+  public ThenButtonSubmitted() {
     const controls = this.formValue.controls;
     this.isButtonSubmitted = true;
 

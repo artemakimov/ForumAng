@@ -12,11 +12,5 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  @Output() isUserLogout = new EventEmitter();
 
-  logout() {
-    this.authService.signOut();
-    this.isUserLogout.emit();
-    this.router.navigate(['login']);
-  }
 }

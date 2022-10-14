@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  public ThenActive() {
+  public ThenButtonSubmitted() {
     const controls = this.formValue.controls;
     this.isButtonSubmitted = true;
 
