@@ -64,6 +64,23 @@
       color: aqua;
       background-color: black;
     }
+    &:active {
+      color: red;
+    }
+  }
+  &__logout-button{
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    border: 2px solid rgb(23, 130, 238);
+    height: 50px;
+    width: 100px;
+    transition-delay: 0s;
+    transition: all 0.5s;
+    &:hover{
+      color: aqua;
+      background-color: black;
+    }
 
     &:active {
       color: red;

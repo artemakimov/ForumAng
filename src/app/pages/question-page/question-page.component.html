@@ -1,6 +1,6 @@
 
 <section class="container question-container">
-    <h2 class="question-container__title">New question</h2>
+    <h2 class="question__title">New question</h2>
     <form action="" class="form" [formGroup]="form" (ngSubmit)="post()">
         <div class="form__container">
             <label for="title" class="form__text">
@@ -15,32 +15,13 @@
             </label>
         </div>
         <div class="form__container">
-            <label for="tags" class="form__text">
-                Tags:
-                <ul>
-                    <li>
-                        <label>
-                            <input type="checkbox">
-                            Junior
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="checkbox">
-                            Middle 
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            <input type="checkbox">
-                            Senior
-                        </label>
-                    </li>
-                </ul>
+            <label *ngFor="let tag of tags" class="form__text">
+                <input type="checkbox">
+                {{tag}}
             </label>
         </div>
         <div>
-            <button class="form__button">Submit</button>
+            <button class="form__button" [disabled]="form.invalid">Submit</button>
             <a routerLink="home" class="form__cancel-button">Cancel</a>
         </div>
     </form> 

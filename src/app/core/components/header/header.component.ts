@@ -10,34 +10,31 @@ import { AuthService } from '../../service/auth.service';
 })
 export class HeaderComponent implements OnInit {
   public isLoggedIn = false;
-  public currentUserEmail:string;
+  public currentUserEmail: string;
   private destroy = new Subject<boolean>();
 
-  constructor(
-    private authServise: AuthService,
-    private router: Router
-  ) {}
+  constructor(private authServise: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    this.authServise.getAuthState().pipe(takeUntil(this.destroy)).subscribe(user=>
-      {
+    this.authServise
+      .getAuthState()
+      .pipe(takeUntil(this.destroy))
+      .subscribe((user) => {
         this.isLoggedIn = !!user;
-        if(user){
+        if (user) {
           this.currentUserEmail = user.email;
         }
-      })
+      });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.destroy.next(true);
     this.destroy.complete;
   }
 
   logout() {
-    this.authServise.signOut().then(
-      value =>{
-        this.router.navigate(['/login'])
-      }
-    )
+    this.authServise.signOut().then((value) => {
+      this.router.navigate(['/login']);
+    });
   }
 }
