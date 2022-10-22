@@ -12,7 +12,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { RegistrationComponent } from './pages/reg/reg.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AuthService } from './core/service/auth.service';
+import { AuthService } from './core/services/auth.service';
 import { HomeComponent } from './pages/home/home.component';
 import { HomeGuard } from './core/guard/home.guard';
 import { AuthGuard } from './core/guard/auth.guard';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-import { AuthService } from '../../service/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -29,11 +29,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnDestroy() {
     this.destroy.next(true);
-    this.destroy.complete;
+    this.destroy.complete();
   }
 
   logout() {
-    this.authServise.signOut().then((value) => {
+    this.authServise.signOut().then(() => {
       this.router.navigate(['/login']);
     });
   }

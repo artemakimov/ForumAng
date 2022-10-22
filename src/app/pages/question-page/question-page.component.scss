@@ -66,4 +66,12 @@
         }
     }
 
+    &__error{
+        display: flex;
+        justify-content: center;
+        padding: 7px;
+        color: red;
+        background-color: #000;
+        border-radius: 3px;
+    }
 }
