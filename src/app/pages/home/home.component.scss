@@ -2,17 +2,77 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 
   &__title {
     font-size: 40px;
     text-align: center;
     color: #212529;
   }
+  &__img{
+    position: fixed;
+    bottom: 5px;
+    right: 170px;
+    width: 80px;
+    height: 80px;
+    align-items: flex-end;
+  }
 
-  &__button {
+}
+
+.questlist{
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  &__questcard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+    height: auto;
+    padding-bottom: 10px;
+    box-shadow: rgb(60, 242, 208) 0 0 25px 0;
+  }
+
+  &__questcard-title{
+    transition: 1s all;
     width: 200px;
-    height: 40px;
-    font-size: 25px;
-    color: black;
+    font-size: 20px;
+    padding: 10px;
+    border-bottom: 2px solid rgb(14, 161, 175);
+    border-top: 2px dashed rgb(14, 161, 175);
+    border-left: 2px dashed rgb(14, 161, 175);
+
+    &:hover{
+      transition: 1s all;
+      border: 2px solid rgb(14, 161, 175);
+      box-shadow: rgb(229, 69, 69) 0 0 15px 0;
+    }
+  }
+
+  &__questcard-info{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    padding: 10px;
+    border-bottom: 2px dashed rgb(14, 161, 175);
+    border-top: 4px solid rgb(14, 161, 175);
+    border-right: 2px dashed rgb(14, 161, 175);
+  }
+
+  &__questcard-time{
+    font-size: 15px;
+  }
+
+  &__questcard-taglist{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-style: italic;
+
   }
 }

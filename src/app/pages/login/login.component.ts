@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
     this.formValue.reset();
   }
 
-  public IsControlValid(controlName: string): boolean {
+  public isControlValid(controlName: string): boolean {
     const control = this.formValue.controls[controlName];
 
     return control.invalid && control.touched;
