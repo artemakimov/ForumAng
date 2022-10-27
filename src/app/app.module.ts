@@ -6,9 +6,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './core/components/header/header.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { RegistrationComponent } from './pages/reg/reg.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -17,6 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { HomeGuard } from './core/guard/home.guard';
 import { AuthGuard } from './core/guard/auth.guard';
 import { QuestionPageComponent } from './pages/question-page/question-page.component';
+import { HttpClientModule }   from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,9 +31,7 @@ import { QuestionPageComponent } from './pages/question-page/question-page.compo
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
+    HttpClientModule,
   ],
   providers: [HomeGuard, AuthService, AuthGuard],
   bootstrap: [AppComponent],

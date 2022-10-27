@@ -9,7 +9,7 @@
             </label>
         </div>
         <div class="form__error" *ngIf="isControlValid('title')">
-            Password must be 5-20 characters.
+            Title must be 5-20 characters.
         </div>
         <div class="form__container">
             <label for="text" class="form__text">
@@ -18,7 +18,7 @@
             </label>
         </div>
         <div class="form__error" *ngIf="isControlValid('text')">
-            Password must be 10-120 characters.
+            Text must be 10-120 characters.
         </div>
         <div class="form__container">
             <label *ngFor="let item of tagsDev" class="form__text">
@@ -27,7 +27,7 @@
             </label>
         </div>
         <div>
-            <button class="form__button" [disabled]="form.invalid">Submit</button>
+            <button class="form__button" [disabled]="form.invalid || !tagFlag">Submit</button>
             <a routerLink="/home" class="form__cancel-button">Cancel</a>
         </div>
     </form> 

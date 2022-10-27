@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  apiURL: 'https://forum-3b8b6-default-rtdb.asia-southeast1.firebasedatabase.app/',
   production: false,
   firebase: {
     apiKey: "AIzaSyC-Y6oMRW_VJjPPcdLw6fXmZmQgJq6ITls",
