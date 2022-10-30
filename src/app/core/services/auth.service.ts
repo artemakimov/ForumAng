@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthProvider } from 'firebase/auth';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import firebase from 'firebase/compat';
 import User = firebase.User;
 import UserCredential = firebase.auth.UserCredential
@@ -11,24 +11,10 @@ import UserCredential = firebase.auth.UserCredential
   providedIn: 'root',
 })
 export class AuthService {
-  public authState: Observable<auth.User>;
-  public currentUserEmail: string;
-  public currentUserId: string;
-  public authGuardPipe: Observable<auth.User>;
-  public UserEmail: string;
 
   constructor(
     public ngFireAuth: AngularFireAuth
-  ) {
-    this.authGuardPipe = ngFireAuth.authState;
-    this.authGuardPipe.pipe(map((user) => user?.email)).subscribe((email) => {
-      if (email) {
-        this.currentUserEmail = email;
-      } else {
-        this.currentUserEmail = email;
-      }
-    });
-  }
+  ) {}
 
   public signIn(
     email: string,

@@ -5,8 +5,8 @@
     <ng-container *ngIf="isLoggedIn; else auth">
         <a class="header__anch header__button" routerLink="question-page" routerLinkActive="active">Add question</a>
         <div>
-        <p>{{currentUserEmail}}</p>
-        <button (click)="logout()" class="header__logout-button">Log Out</button>    
+            <p>{{currentUserEmail}}</p>
+            <button (click)="logout()" class="header__logout-button">Log Out</button>
         </div>
     </ng-container>
 

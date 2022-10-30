@@ -47,6 +47,10 @@
             border-radius: 2px;
             background: linear-gradient(90deg, rgba(19,117,241,1) 0%, rgba(55,215,179,1) 100%);
         }
+
+        &:disabled{
+            pointer-events: none;
+        }
     }
     &__cancel-button{
         border: 3px solid rgb(0, 0, 0);

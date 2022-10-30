@@ -8,6 +8,7 @@ import {
 import { Subject } from 'rxjs';
 import { PostService } from 'src/app/core/services/post.service';
 import { categories } from '../../core/models/categories';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question-page',
@@ -17,10 +18,10 @@ import { categories } from '../../core/models/categories';
 export class QuestionPageComponent implements OnInit {
 
   public form: FormGroup;
-  public tagFlag = false;
+  public isTagFlag = false;
   public tagsDev = categories;
 
-  constructor(private fb: FormBuilder, private postService: PostService) {}
+  constructor(private fb: FormBuilder, private postService: PostService, private router: Router) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -60,7 +61,7 @@ export class QuestionPageComponent implements OnInit {
       (<FormGroup>this.form.get('tags')).removeControl(`${checkbox.id}`);
     }
 
-    this.tagFlag = Boolean(Object.keys(this.form.get('tags').value).length);
+    this.isTagFlag = Boolean(Object.keys(this.form.get('tags').value).length);
   }
 
   public isControlValid(name: string): boolean {
@@ -69,6 +70,17 @@ export class QuestionPageComponent implements OnInit {
     return control.invalid && control.touched;
   }
 
+
+  onSubmit(){
+    this.postService.createPost({
+      ...this.form.value, date: new Date()
+    })
+    .subscribe( value =>{
+      this.router.navigate(['/home'])
+    }
+
+    )
+  }
 
 
 }

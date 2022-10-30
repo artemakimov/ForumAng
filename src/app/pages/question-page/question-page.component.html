@@ -1,7 +1,7 @@
 
 <section class="container question-container">
     <h2 class="question__title">New question</h2>
-    <form action="" class="form" [formGroup]="form" (ngSubmit)="post()">
+    <form action="" class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="form__container">
             <label for="title" class="form__text">
                 Title
@@ -27,7 +27,7 @@
             </label>
         </div>
         <div>
-            <button class="form__button" [disabled]="form.invalid || !tagFlag">Submit</button>
+            <button class="form__button" [disabled]="form.invalid || !isTagFlag">Submit</button>
             <a routerLink="/home" class="form__cancel-button">Cancel</a>
         </div>
     </form> 
