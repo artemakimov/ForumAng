@@ -1,16 +1,17 @@
 <section class="home">
   <h3 class="home__title">Home page</h3>
-  <a routerLink="/question-page"><img src="../../../assets/img/ikonka-plyus-10.png" alt="Add post" class="home__img"></a>
-  <ul class="questlist">
+  <a routerLink="/question-page"><img src="../../../assets/img/ikonka-plyus-10.png" alt="Add post"
+      class="home__img"></a>
+  <ul class="question-card">
     <li *ngFor="let post of posts">
-      <div class="questlist__questcard">
-        <h2 class="questlist__questcard-title">
+      <div class="question-card__questcard">
+        <h2 class="question-card__title">
           {{post.title}}
         </h2>
-        <div class="questlist__questcard-info">
-          <p class="questlist__questcard-time">{{post.date | date}}</p>
-          <ul class="questlist__questcard-taglist">
-            <li class="questlist__questcard-tag" *ngFor="let tag of post.tags">
+        <div class="question-card__info">
+          <p class="question-card__time">{{post.date | date}}</p>
+          <ul class="question-card__taglist">
+            <li class="question-card__tag" *ngFor="let tag of post.tags">
               <small>
                 {{tag}}
               </small>

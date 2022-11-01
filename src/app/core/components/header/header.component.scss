@@ -68,7 +68,7 @@
       color: red;
     }
   }
-  &__logout-button{
+  &__logout-button {
     margin-bottom: 10px;
     border-radius: 5px;
     text-align: center;
@@ -77,7 +77,7 @@
     width: 100px;
     transition-delay: 0s;
     transition: all 0.5s;
-    &:hover{
+    &:hover {
       color: aqua;
       background-color: black;
     }
@@ -88,6 +88,10 @@
   }
 }
 
-.active{
+.active {
   background-color: rgb(0, 0, 0);
+}
+
+.add-question-active {
+  display: none;
 }

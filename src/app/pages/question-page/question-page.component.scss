@@ -1,81 +1,81 @@
+@mixin button($color, $hoverColor) {
+  border: 3px solid rgb(0, 0, 0);
+  border-radius: 20px;
+  width: 100px;
+  height: 50px;
+  margin-right: 20px;
+  background-color: $color;
+  cursor: pointer;
+  transition: 0.5s all;
+  font-size: 20px;
+  &:hover {
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 2px;
+    background: $hoverColor;
+  }
 
-
-.question-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: rgb(42 208 245) 0 0 25px 0;
+  &:disabled {
+    pointer-events: none;
+  }
 }
 
-.form{
-    padding-bottom: 20px;
-    
-    &__container{
-        transition: 0.5s all;
-        margin-bottom: 10px;
-    }
+.question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgb(42 208 245) 0 0 25px 0;
+}
 
+.form {
+  padding-bottom: 20px;
 
-    &__input, &__textarea{
-        width: 100%;
-        justify-content: space-between;
-        padding: 12px 20px;
-        box-sizing: border-box;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        background-color: #f8f8f8;
-        font-size: 16px;
-        resize: none;
-    }
+  &__container {
+    transition: 0.5s all;
+    margin-bottom: 10px;
+  }
 
-    &__text{
-        justify-content: center;
-    }
+  &__input,
+  &__textarea {
+    width: 100%;
+    justify-content: space-between;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+  }
 
-    &__button{
-        border: 3px solid rgb(0, 0, 0);
-        border-radius: 20px;
-        width: 100px;
-        height: 50px;
-        margin-right: 20px;
-        background-color: rgb(113, 208, 229);
-        cursor: pointer;
-        transition: 0.5s all;
-        font-size: 20px;
-        &:hover{
-            border: 1px solid rgb(0, 0, 0);
-            border-radius: 2px;
-            background: linear-gradient(90deg, rgba(19,117,241,1) 0%, rgba(55,215,179,1) 100%);
-        }
+  &__text {
+    justify-content: center;
+  }
 
-        &:disabled{
-            pointer-events: none;
-        }
-    }
-    &__cancel-button{
-        border: 3px solid rgb(0, 0, 0);
-        border-radius: 20px;
-        padding: 7px;
-        background-color: rgb(113, 208, 229);
-        cursor: pointer;
-        transition: 0.5s all;
-        text-decoration: none;
-        color: #000;
-        font-size: 20px;
-        &:hover{
-            color: aqua;
-            border: 6px solid rgb(0, 0, 0);
-            border-radius: 2px;
-            background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(215,55,55,1) 100%);
-        }
-    }
+  &__button {
+    @include button(
+      rgb(113, 208, 229),
+      linear-gradient(
+        90deg,
+        rgba(19, 117, 241, 1) 0%,
+        rgba(55, 215, 179, 1) 100%
+      )
+    );
+  }
+  &__cancel-button {
+    @include button(
+      rgb(113, 208, 229),
+      linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(215, 55, 55, 1) 100%)
+    );
+    padding: 7px;
+    color: #000;
+  }
 
-    &__error{
-        display: flex;
-        justify-content: center;
-        padding: 7px;
-        color: red;
-        background-color: #000;
-        border-radius: 3px;
-    }
+  &__error {
+    display: flex;
+    justify-content: center;
+    padding: 7px;
+    color: red;
+    background-color: #000;
+    border-radius: 3px;
+  }
 }

@@ -20,13 +20,13 @@
 
 }
 
-.questlist{
+.question-card{
   justify-content: center;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-
+  max-width: 1170px;
   &__questcard{
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@
     box-shadow: rgb(60, 242, 208) 0 0 25px 0;
   }
 
-  &__questcard-title{
+  &__title{
     transition: 1s all;
     width: 200px;
     font-size: 20px;
@@ -53,7 +53,7 @@
     }
   }
 
-  &__questcard-info{
+  &__info{
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -64,11 +64,11 @@
     border-right: 2px dashed rgb(14, 161, 175);
   }
 
-  &__questcard-time{
+  &__time{
     font-size: 15px;
   }
 
-  &__questcard-taglist{
+  &__taglist{
     display: flex;
     align-items: center;
     gap: 6px;

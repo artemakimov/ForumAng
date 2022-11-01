@@ -1,3 +1,5 @@
+//DESTROY
+
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -5,7 +7,6 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Subject } from 'rxjs';
 import { PostService } from 'src/app/core/services/post.service';
 import { categories } from '../../core/models/categories';
 import { Router } from '@angular/router';
@@ -16,12 +17,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./question-page.component.scss'],
 })
 export class QuestionPageComponent implements OnInit {
-
   public form: FormGroup;
   public isTagFlag = false;
   public tagsDev = categories;
 
-  constructor(private fb: FormBuilder, private postService: PostService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private postService: PostService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -70,17 +74,14 @@ export class QuestionPageComponent implements OnInit {
     return control.invalid && control.touched;
   }
 
-
-  onSubmit(){
-    this.postService.createPost({
-      ...this.form.value, date: new Date()
-    })
-    .subscribe( value =>{
-      this.router.navigate(['/home'])
-    }
-
-    )
+  onSubmit() {
+    this.postService
+      .createPost({
+        ...this.form.value,
+        date: new Date(),
+      })
+      .subscribe((value) => {
+        this.router.navigate(['/home']);
+      });
   }
-
-
 }

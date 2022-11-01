@@ -3,7 +3,8 @@
     <a routerLink="home"><img class="header__logo" src="../../../assets/img/logo.png" alt="Our logo"></a>
 
     <ng-container *ngIf="isLoggedIn; else auth">
-        <a class="header__anch header__button" routerLink="question-page" routerLinkActive="active">Add question</a>
+        <a class="header__anch header__button" routerLink="question-page" routerLinkActive="add-question-active">Add
+            question</a>
         <div>
             <p>{{currentUserEmail}}</p>
             <button (click)="logout()" class="header__logout-button">Log Out</button>

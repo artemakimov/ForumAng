@@ -24,10 +24,9 @@
 }
 
 .form {
-  
-      &__error{
-        color: #ff0000;
-      }
+  &__error {
+    color: #ff0000;
+  }
 
   &__login {
     display: flex;
@@ -81,7 +80,6 @@
       background-color: #ff0000;
       cursor: not-allowed;
     }
-
   }
 }
 
