@@ -25,11 +25,16 @@ export class PostService {
           const tags = Object.keys(res[id].tags);
 
           return {
+            id,
             ...res[id],
             tags,
           } as Post;
         });
       })
     );
+  }
+
+  public getPost(id:string): Observable<Post>{
+    return this.http.get<Post>((environment.apiURL + '/posts/' + id + '.json'))
   }
 }

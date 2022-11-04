@@ -6,7 +6,9 @@
     <li *ngFor="let post of posts">
       <div class="question-card__questcard">
         <h2 class="question-card__title">
-          {{post.title}}
+          <a class='question-card__link' [routerLink]="['/post/', 123123]">
+            {{post.title}}
+          </a>
         </h2>
         <div class="question-card__info">
           <p class="question-card__time">{{post.date | date}}</p>

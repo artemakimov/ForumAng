@@ -15,6 +15,7 @@ import { HomeGuard } from './core/guard/home.guard';
 import { AuthGuard } from './core/guard/auth.guard';
 import { QuestionPageComponent } from './pages/question-page/question-page.component';
 import { HttpClientModule }   from '@angular/common/http';
+import { PostComponent } from './pages/post/post.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule }   from '@angular/common/http';
     HeaderComponent,
     HomeComponent,
     QuestionPageComponent,
+    PostComponent,
   ],
   imports: [
     BrowserModule,
