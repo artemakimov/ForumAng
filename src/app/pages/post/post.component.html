@@ -1,1 +1,15 @@
-<p>post works!</p>
+<section class="container post">
+    <h2 class="post__title">
+        {{post.title}} by username
+    </h2>
+    <p class="post__text">
+        {{post.text}}
+    </p>
+    <div class="post__links">
+        <ul class="post__tags" *ngFor="let tag of post.tags">
+            <li class="post__tags-tag">tag</li>
+        </ul>
+        <p class="post__date">{{post.date | date}}</p>
+        <a routerLink="/home" class="post__button">Go home</a>
+    </div>
+</section>

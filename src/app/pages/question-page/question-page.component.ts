@@ -1,5 +1,3 @@
-//DESTROY
-
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -10,6 +8,7 @@ import {
 import { PostService } from 'src/app/core/services/post.service';
 import { categories } from '../../core/models/categories';
 import { Router } from '@angular/router';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-question-page',
@@ -20,7 +19,8 @@ export class QuestionPageComponent implements OnInit {
   public form: FormGroup;
   public isTagFlag = false;
   public tagsDev = categories;
-
+  private destroy = new Subject<boolean>();
+  
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
@@ -79,9 +79,14 @@ export class QuestionPageComponent implements OnInit {
       .createPost({
         ...this.form.value,
         date: new Date(),
-      })
+      }).pipe(takeUntil(this.destroy))
       .subscribe((value) => {
         this.router.navigate(['/home']);
       });
+  }
+
+  ngOnDestroy() {
+    this.destroy.next(true);
+    this.destroy.complete();
   }
 }

@@ -1,0 +1,52 @@
+.post{
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgb(42 208 245) 0 0 25px 0;
+
+    &__title{
+        font-size: 30px;
+    }
+
+    &__text{
+        font-size: 20px;
+    }
+
+    &__links{
+      display: flex;
+      justify-content: space-between;  
+    }
+    
+    &__tags{
+        display: flex;
+        gap:10px;
+    }
+
+    &__button{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        width: 100px;
+        font-size: 20px;
+        background-color: rgb(21, 86, 86);
+        border: 5px solid rgb(35, 227, 227);
+        border-radius: 5px;
+        transition: 0.5s;
+        color: rgb(190, 196, 196);
+        transition: 0.5s;
+
+        &:hover {
+            transition: 0.5s;
+            color: black;
+            border: 5px solid rgb(38, 146, 146);
+            background: rgb(35, 227, 227);
+
+        }
+        
+        &:active{
+            transition: 0.2s;
+            font-size: 10px;
+            border: 10px solid rgb(38, 146, 146);
+        }
+    }
+}

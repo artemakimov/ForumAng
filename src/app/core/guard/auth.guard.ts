@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Route, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subject, takeUntil } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-
+  private destroy = new Subject<boolean>();
   constructor(
     private authService:AuthService,
     private router: Router
@@ -26,9 +26,13 @@ export class AuthGuard implements CanActivate {
           return true;
         }
 
-      ))
+      ), takeUntil(this.destroy))
 
 
   }
-  
+
+  ngOnDestroy() {
+    this.destroy.next(true);
+    this.destroy.complete();
+  }
 }

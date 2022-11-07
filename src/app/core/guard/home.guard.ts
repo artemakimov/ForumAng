@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators'
 
 @Injectable()
 export class HomeGuard implements CanActivate {
+  private destroy = new Subject<boolean>();
+  
   constructor(private router: Router, private afAuth: AngularFireAuth) { }
   canActivate(): Observable<boolean> {
     return this.afAuth.authState.pipe(map((user)=>{
@@ -14,6 +16,11 @@ export class HomeGuard implements CanActivate {
       }
       this.router.navigate(['/login'])
       return false;
-    }))
+    }), takeUntil(this.destroy))
+  }
+
+  ngOnDestroy() {
+    this.destroy.next(true);
+    this.destroy.complete();
   }
 }

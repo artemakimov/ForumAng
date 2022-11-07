@@ -9,7 +9,7 @@
     text-align: center;
     color: #212529;
   }
-  &__img{
+  &__img {
     position: fixed;
     bottom: 5px;
     right: 170px;
@@ -17,17 +17,16 @@
     height: 80px;
     align-items: flex-end;
   }
-
 }
 
-.question-card{
+.question-card {
   justify-content: center;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
   max-width: 1170px;
-  &__questcard{
+  &__questcard {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +36,8 @@
     box-shadow: rgb(60, 242, 208) 0 0 25px 0;
   }
 
-  &__title{
+  &__title {
+    text-decoration: none;
     transition: 1s all;
     width: 200px;
     font-size: 20px;
@@ -46,14 +46,28 @@
     border-top: 2px dashed rgb(14, 161, 175);
     border-left: 2px dashed rgb(14, 161, 175);
 
-    &:hover{
+    &:hover {
+      margin-left: 20%;
       transition: 1s all;
       border: 2px solid rgb(14, 161, 175);
       box-shadow: rgb(229, 69, 69) 0 0 15px 0;
     }
   }
+  &__link {
+    
 
-  &__info{
+
+    &:link {
+      color: #303438;
+    }
+    &:active {
+      color: #303438;
+    }
+    &:visited {
+      color: #303438;
+    }
+  }
+  &__info {
     flex-direction: column;
     display: flex;
     align-items: center;
@@ -64,15 +78,14 @@
     border-right: 2px dashed rgb(14, 161, 175);
   }
 
-  &__time{
+  &__time {
     font-size: 15px;
   }
 
-  &__taglist{
+  &__taglist {
     display: flex;
     align-items: center;
     gap: 6px;
     font-style: italic;
-
   }
 }
