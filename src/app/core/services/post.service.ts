@@ -1,5 +1,3 @@
-//DESTROY
-
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
@@ -12,9 +10,7 @@ import { map, Observable } from 'rxjs';
 export class PostService {
   constructor(private http: HttpClient) {}
 
-  public createPost(post: Post): Observable<Object> {
-    return this.http.post(environment.apiURL + '/posts.json', post);
-  }
+
 
   public getAllPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(environment.apiURL + '/posts.json').pipe(
@@ -34,7 +30,31 @@ export class PostService {
     );
   }
 
-  public getPost(id:string): Observable<Post>{
-    return this.http.get<Post>((environment.apiURL + '/posts/' + id + '.json'))
+  public getPost(id: string): Observable<Post> {
+    return this.http
+      .get<Post>(environment.apiURL + '/posts/' + id + '.json')
+      .pipe(
+        map((post) => {
+          const tags = Object.keys(post.tags);
+          return {
+            id,
+            ...post,
+            tags
+          };
+        })
+      );
+  }
+
+  public createComment(id: string, comment: object): Observable<Object> {
+    return this.http.post((environment.apiURL + '/posts/' + id + '/comments.json'), comment)
+  }
+
+
+  public deletePost(id: string): Observable<Object> {
+    return this.http.delete((environment.apiURL + '/posts/' + id + '.json'));
+  }
+
+  public createPost(post: Post): Observable<Object> {
+    return this.http.post(environment.apiURL + '/posts.json', post);
   }
 }

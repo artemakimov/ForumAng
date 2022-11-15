@@ -24,13 +24,12 @@ export class PostComponent implements OnInit {
       .getPost(this.postId)
       .pipe(takeUntil(this.destroy))
       .subscribe((post) => {
-        console.log(post);
         this.post = post;
       });
   }
 
   public getId(): void {
-    this.activatedRoute.params.subscribe(
+    this.activatedRoute.params.pipe(takeUntil(this.destroy)).subscribe(
       (param) => (this.postId = Object.values(param)[0])
     );
   }

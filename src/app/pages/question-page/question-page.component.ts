@@ -49,10 +49,6 @@ export class QuestionPageComponent implements OnInit {
     });
   }
 
-  post() {
-    console.log(this.form.value);
-  }
-
   onChange(event: Event) {
     const checkbox = event.target as HTMLInputElement;
 

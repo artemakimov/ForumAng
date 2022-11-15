@@ -1,7 +1,7 @@
-<section class="main">
-    <div class="main__containercontainer">
-        <h2 class="main__subtitle">Sign up</h2>
-        <form class="main__form" [formGroup]="formValue" (ngSubmit)="ThenButtonSubmitted()">
+<section class="login">
+    <div class="login__container container">
+        <h2 class="login__subtitle">Sign up</h2>
+        <form class="login__form" [formGroup]="formValue" (ngSubmit)="ThenButtonSubmitted()">
             <div class="form__login">
                 <label class="form__text" for="user">Email</label>
                 <input type="text" class="form__input" id="user" formControlName="email">

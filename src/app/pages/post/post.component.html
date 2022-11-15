@@ -1,15 +1,47 @@
 <section class="container post">
-    <h2 class="post__title">
-        {{post.title}} by username
-    </h2>
-    <p class="post__text">
-        {{post.text}}
-    </p>
-    <div class="post__links">
-        <ul class="post__tags" *ngFor="let tag of post.tags">
-            <li class="post__tags-tag">tag</li>
-        </ul>
-        <p class="post__date">{{post.date | date}}</p>
-        <a routerLink="/home" class="post__button">Go home</a>
+    <div class="container">
+        <h2 class="post__title">
+            {{post.title}} by username
+        </h2>
+        <p class="post__text">
+            {{post.text}}
+        </p>
+        <div class="post__links">
+            <ul class="post__tags">
+                <li class="post__tags-tag" *ngFor="let tag of post.tags">{{tag}}</li>
+            </ul>
+            <p class="post__date">{{post.date | date}}</p>
+            <a routerLink="/home" class="post__button">Go home</a>
+        </div>
     </div>
+</section>
+<section class="container comments">
+    <h2 class="comments__header">
+        Comments
+    </h2>
+    <form action="" class="comments__form">
+        <textarea type="text" class="comments__textarea" placeholder="Type your answer here"></textarea>
+        <button class="comments__button">Submit</button>
+    </form>
+    <ul>
+        <li class="comment">
+            <p class="comment__author">
+                Username
+            </p>
+            <p class="comment__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, officia quas molestiae iure tempora nesciunt ullam soluta commodi incidunt quam repellendus consequatur, amet temporibus at obcaecati adipisci, unde molestias fugit!
+            </p>
+            <small>07 oct, 2022</small>
+        </li>
+
+        <li class="comment">
+            <p class="comment__author">
+                Username
+            </p>
+            <p class="comment__text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, officia quas molestiae iure tempora nesciunt ullam soluta commodi incidunt quam repellendus consequatur, amet temporibus at obcaecati adipisci, unde molestias fugit!
+            </p>
+            <small>07 oct, 2022</small>
+        </li>
+    </ul>
 </section>
