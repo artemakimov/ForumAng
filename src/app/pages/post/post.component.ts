@@ -26,6 +26,8 @@ export class PostComponent implements OnInit {
       .subscribe((post) => {
         this.post = post;
       });
+
+      
   }
 
   public getId(): void {
