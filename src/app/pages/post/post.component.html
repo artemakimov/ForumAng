@@ -19,29 +19,19 @@
     <h2 class="comments__header">
         Comments
     </h2>
-    <form action="" class="comments__form">
-        <textarea type="text" class="comments__textarea" placeholder="Type your answer here"></textarea>
-        <button class="comments__button">Submit</button>
+    <form action="" class="comments__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <textarea type="text" class="comments__textarea" placeholder="Type your answer here" formControlName="commentText"></textarea>
+        <button class="comments__button" type="submit">Submit</button>
     </form>
     <ul>
-        <li class="comment">
+        <li class="comment" *ngFor="let comment of post.comments">
             <p class="comment__author">
                 Username
             </p>
             <p class="comment__text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, officia quas molestiae iure tempora nesciunt ullam soluta commodi incidunt quam repellendus consequatur, amet temporibus at obcaecati adipisci, unde molestias fugit!
+                {{comment.text}}
             </p>
-            <small>07 oct, 2022</small>
-        </li>
-
-        <li class="comment">
-            <p class="comment__author">
-                Username
-            </p>
-            <p class="comment__text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, officia quas molestiae iure tempora nesciunt ullam soluta commodi incidunt quam repellendus consequatur, amet temporibus at obcaecati adipisci, unde molestias fugit!
-            </p>
-            <small>07 oct, 2022</small>
+            <small>{{comment.date}}</small>
         </li>
     </ul>
 </section>
