@@ -1,0 +1,33 @@
+<section class="container question-container">
+    <h2 class="question__title">Edit question</h2>
+    <form action="" class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form__container">
+            <label for="title" class="form__text">
+                Title
+                <input type="text" id="title" class="form__input" formControlName="title">
+            </label>
+        </div>
+        <div class="form__error" *ngIf="isControlValid('title')">
+            Title must be 5-20 characters.
+        </div>
+        <div class="form__container">
+            <label for="text" class="form__text">
+                Text
+                <textarea name="text" id="text" class="form__textarea" formControlName="text"></textarea>
+            </label>
+        </div>
+        <div class="form__error" *ngIf="isControlValid('text')">
+            Text must be 10-120 characters.
+        </div>
+        <div class="form__container">
+            <label *ngFor="let item of tagsDev" class="form__text">
+                <input type="checkbox" [id]="item" (change)="onChange($event)">
+                {{item}}
+            </label>
+        </div>
+        <div>
+            <button class="form__button" [disabled]="form.invalid || !isTagFlag">Submit</button>
+            <a routerLink="/home" class="form__cancel-button">Cancel</a>
+        </div>
+    </form>
+</section>

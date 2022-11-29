@@ -16,6 +16,7 @@ import { AuthGuard } from './core/guard/auth.guard';
 import { QuestionPageComponent } from './pages/question-page/question-page.component';
 import { HttpClientModule }   from '@angular/common/http';
 import { PostComponent } from './pages/post/post.component';
+import { EditComponent } from './pages/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PostComponent } from './pages/post/post.component';
     HomeComponent,
     QuestionPageComponent,
     PostComponent,
+    EditComponent,
   ],
   imports: [
     BrowserModule,

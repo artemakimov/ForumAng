@@ -36,9 +36,13 @@ export class PostService {
       .pipe(
         map((post) => {
           const tags = Object.keys(post.tags);
+          const comments = Object.keys(post.comments).map((id:any) =>{
+            return post.comments[id]
+          });
           return {
-            id,
             ...post,
+            id,
+            comments,
             tags
           };
         })
@@ -56,5 +60,9 @@ export class PostService {
 
   public createPost(post: Post): Observable<Object> {
     return this.http.post(environment.apiURL + '/posts.json', post);
+  }
+
+  public updatePost(id: string, post: Post): Observable<Object> {
+    return this.http.patch<Post>((environment.apiURL + '/posts/' + id + '.json'), post);
   }
 }

@@ -1,17 +1,18 @@
 <section class="container post">
     <div class="container">
         <h2 class="post__title">
-            {{post.title}} by username
+            {{post?.title}} by username
         </h2>
         <p class="post__text">
-            {{post.text}}
+            {{post?.text}}
         </p>
         <div class="post__links">
             <ul class="post__tags">
                 <li class="post__tags-tag" *ngFor="let tag of post.tags">{{tag}}</li>
             </ul>
-            <p class="post__date">{{post.date | date}}</p>
+            <p class="post__date">{{post?.date | date}}</p>
             <a routerLink="/home" class="post__button">Go home</a>
+            <a [routerLink]="'/edit/' + post.id" class="post__button">Edit</a>
         </div>
     </div>
 </section>
@@ -29,9 +30,9 @@
                 Username
             </p>
             <p class="comment__text">
-                {{comment.text}}
+                {{comment?.text}}
             </p>
-            <small>{{comment.date}}</small>
+            <small>{{comment?.date | date}}</small>
         </li>
     </ul>
 </section>
