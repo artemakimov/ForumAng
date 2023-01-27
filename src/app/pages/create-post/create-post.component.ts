@@ -17,9 +17,9 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class CreatePostComponent implements OnInit {
   public form: FormGroup;
-  public isTagFlag = false;
+  public isTagChecked = false;
   public tagsDev = categories;
-  private destroy = new Subject<boolean>();
+  private destroy = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -61,7 +61,7 @@ export class CreatePostComponent implements OnInit {
       (<FormGroup>this.form.get('tags')).removeControl(`${checkbox.id}`);
     }
 
-    this.isTagFlag = Boolean(Object.keys(this.form.get('tags').value).length);
+    this.isTagChecked = Boolean(Object.keys(this.form.get('tags').value).length);
   }
 
   public isControlValid(name: string): boolean {
@@ -71,18 +71,22 @@ export class CreatePostComponent implements OnInit {
   }
 
   onSubmit() {
+
+    const body = {
+      ...this.form.value,
+      date: new Date(),
+    }
+
     this.postService
-      .createPost({
-        ...this.form.value,
-        date: new Date(),
-      }).pipe(takeUntil(this.destroy))
+      .createPost(body)
+      .pipe(takeUntil(this.destroy))
       .subscribe((value) => {
         this.router.navigate(['/home']);
       });
   }
 
   ngOnDestroy() {
-    this.destroy.next(true);
+    this.destroy.next( );
     this.destroy.complete();
   }
 }

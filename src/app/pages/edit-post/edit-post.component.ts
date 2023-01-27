@@ -17,13 +17,14 @@ import { PostService } from 'src/app/core/services/post.service';
   styleUrls: ['./edit-post.component.scss'],
 })
 export class EditPostComponent implements OnInit {
-  public form: FormGroup;
-  public isTagFlag = false;
-  public tagsDev = categories;
-  private destroy = new Subject<boolean>();
-  private postId: string;
+
   public post: Post;
+  public form: FormGroup;
+  public isTagChecked = false;
+  public tagsDev = categories;
+  private postId: string;
   private tags: string[];
+  private destroy = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -35,25 +36,7 @@ export class EditPostComponent implements OnInit {
   ngOnInit(): void {
     this.postId = this.activatedRoute.snapshot.params['id'];
 
-    this.form = this.fb.group({
-      title: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(20),
-        ],
-      ],
-      text: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(10),
-          Validators.maxLength(120),
-        ],
-      ],
-      tags: this.fb.group({}),
-    });
+    this.initForm();
 
     this.postService
       .getPost(this.postId)
@@ -74,7 +57,29 @@ export class EditPostComponent implements OnInit {
       });
   }
 
-  onChange(event: Event) {
+  private initForm() {
+    this.form = this.fb.group({
+      title: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(20),
+        ],
+      ],
+      text: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(120),
+        ],
+      ],
+      tags: this.fb.group({}),
+    });
+  }
+
+  public onChange(event: Event) {
     const checkbox = event.target as HTMLInputElement;
 
     if (checkbox.checked) {
@@ -86,10 +91,12 @@ export class EditPostComponent implements OnInit {
       (<FormGroup>this.form.get('tags')).removeControl(`${checkbox.id}`);
     }
 
-    this.isTagFlag = Boolean(Object.keys(this.form.get('tags').value).length);
+    console.log(checkbox)
+    this.isTagChecked = Boolean(Object.keys(this.form.get('tags').value).length);
   }
 
   public isControlValid(name: string): boolean {
+
     const control = this.form.controls[name];
 
     return control.invalid && control.touched;
@@ -114,7 +121,7 @@ export class EditPostComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.destroy.next(true);
+    this.destroy.next();
     this.destroy.complete();
   }
 }
