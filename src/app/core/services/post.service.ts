@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Post } from 'src/app/core/models/interfaces/post.interface';
 import { map, Observable } from 'rxjs';
+import {Comment} from "../models/interfaces/comment.interface";
 
 @Injectable({
   providedIn: 'root',
@@ -32,13 +33,18 @@ export class PostService {
 
   public getPost(id: string): Observable<Post> {
     return this.http
-      .get<Post>(environment.apiURL + '/posts/' + id + '.json')
+      .get<Post>(`${environment.apiURL}/posts/${id}.json`)
       .pipe(
         map((post) => {
           const tags = Object.keys(post.tags);
-          const comments = Object.keys(post.comments).map((id:any) =>{
-            return post.comments[id]
-          });
+          let comments: Comment[] = [];
+
+          if (post.comments) {
+            comments = Object.keys(post.comments).map((id:any) =>{
+              return post.comments[id]
+            });
+          }
+
           return {
             ...post,
             id,

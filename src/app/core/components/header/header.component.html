@@ -1,18 +1,19 @@
 <header class="header container header__container">
 
-    <a routerLink="home"><img class="header__logo" src="../../../assets/img/logo.png" alt="Our logo"></a>
+  <a routerLink="home">
+    <img alt="Our logo" class="header__logo" src="../../../../assets/img/logo.png">
+  </a>
 
-    <ng-container *ngIf="isLoggedIn; else auth">
-        <a class="header__anch header__button" routerLink="question-page" routerLinkActive="add-question-active">Add
-            question</a>
-        <div>
-            <p>{{currentUserEmail}}</p>
-            <button (click)="logout()" class="header__logout-button">Log Out</button>
-        </div>
-    </ng-container>
+  <ng-container *ngIf="isLoggedIn; else auth">
+    <a class="header__anch header__button" routerLink="question-page" routerLinkActive="add-question-active">Add
+      question</a>
+    <div>
+      <p>{{currentUserEmail}}</p>
+      <button (click)="logout()" class="header__logout-button">Log Out</button>
+    </div>
+  </ng-container>
 
-
-    <ng-template #auth>
+  <ng-template #auth>
         <div class="header__buttons">
             <a class="header__anch header__button" routerLink="login" routerLinkActive="active">Login</a>
             <a class="header__anch header__button" routerLink="sign-up" routerLinkActive="active">Sign Up</a>

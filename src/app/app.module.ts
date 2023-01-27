@@ -7,27 +7,28 @@ import { HeaderComponent } from './core/components/header/header.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../environments/environment';
-import { RegistrationComponent } from './pages/reg/reg.component';
-import { LoginComponent } from './pages/login/login.component';
+
+import { RegistrationComponent } from './pages/sign-up/sign-up.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { AuthService } from './core/services/auth.service';
 import { HomeComponent } from './pages/home/home.component';
-import { HomeGuard } from './core/guard/home.guard';
-import { AuthGuard } from './core/guard/auth.guard';
-import { QuestionPageComponent } from './pages/question-page/question-page.component';
+import { HomeGuard } from './core/guards/home.guard';
+import { AuthGuard } from './core/guards/auth.guard';
+import { CreatePostComponent } from './pages/create-post/create-post.component';
 import { HttpClientModule }   from '@angular/common/http';
-import { PostComponent } from './pages/post/post.component';
-import { EditComponent } from './pages/edit/edit.component';
+import { PostPageComponent } from './pages/post-page/post-page.component';
+import { EditPostComponent } from './pages/edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
-    LoginComponent,
+    SignInComponent,
     RegistrationComponent,
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    QuestionPageComponent,
-    PostComponent,
-    EditComponent,
+    CreatePostComponent,
+    PostPageComponent,
+    EditPostComponent,
   ],
   imports: [
     BrowserModule,

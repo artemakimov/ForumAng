@@ -4,9 +4,9 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-reg',
-  templateUrl: './reg.component.html',
-  styleUrls: ['./reg.component.scss'],
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.scss'],
 })
 export class RegistrationComponent implements OnInit {
   public formValue: FormGroup;

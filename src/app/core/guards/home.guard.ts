@@ -7,14 +7,14 @@ import { map, takeUntil } from 'rxjs/operators'
 @Injectable()
 export class HomeGuard implements CanActivate {
   private destroy = new Subject<boolean>();
-  
+
   constructor(private router: Router, private afAuth: AngularFireAuth) { }
   canActivate(): Observable<boolean> {
     return this.afAuth.authState.pipe(map((user)=>{
       if(user) {
         return true;
       }
-      this.router.navigate(['/login'])
+      this.router.navigate(['/sign-in'])
       return false;
     }), takeUntil(this.destroy))
   }

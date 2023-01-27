@@ -6,16 +6,18 @@ import { Post } from 'src/app/core/models/interfaces/post.interface';
 import { PostService } from 'src/app/core/services/post.service';
 import { Comment } from 'src/app/core/models/interfaces/comment.interface'
 @Component({
-  selector: 'app-post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss'],
+  selector: 'app-post-page',
+  templateUrl: './post-page.component.html',
+  styleUrls: ['./post-page.component.scss'],
 })
-export class PostComponent implements OnInit {
-  private destroy = new Subject<boolean>();
+export class PostPageComponent implements OnInit {
+
+  private destroy = new Subject<void>();
   public postId: string;
   public post: Post;
   public form: FormGroup;
   public comments: Comment[];
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private postService: PostService,
@@ -25,6 +27,7 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.getId();
     this.initForm();
+
     this.postService
       .getPost(this.postId)
       .pipe(takeUntil(this.destroy))
@@ -62,7 +65,7 @@ export class PostComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.destroy.next(true);
+    this.destroy.next();
     this.destroy.complete();
   }
 }

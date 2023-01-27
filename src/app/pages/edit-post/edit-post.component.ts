@@ -5,29 +5,36 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { PostService } from 'src/app/core/services/post.service';
-import { categories } from '../../core/models/categories';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { categories } from 'src/app/core/models/categories';
+import { Post } from 'src/app/core/models/interfaces/post.interface';
+import { PostService } from 'src/app/core/services/post.service';
 
 @Component({
-  selector: 'app-question-page',
-  templateUrl: './question-page.component.html',
-  styleUrls: ['./question-page.component.scss'],
+  selector: 'app-edit-post-page',
+  templateUrl: './edit-post.component.html',
+  styleUrls: ['./edit-post.component.scss'],
 })
-export class QuestionPageComponent implements OnInit {
+export class EditPostComponent implements OnInit {
   public form: FormGroup;
   public isTagFlag = false;
   public tagsDev = categories;
   private destroy = new Subject<boolean>();
-  
+  private postId: string;
+  public post: Post;
+  private tags: string[];
+
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.postId = this.activatedRoute.snapshot.params['id'];
+
     this.form = this.fb.group({
       title: [
         '',
@@ -47,6 +54,24 @@ export class QuestionPageComponent implements OnInit {
       ],
       tags: this.fb.group({}),
     });
+
+    this.postService
+      .getPost(this.postId)
+      .pipe(takeUntil(this.destroy))
+      .subscribe((post) => {
+        this.post = post;
+        this.tags = post.tags;
+        this.form.patchValue({
+          title: post.title,
+          text: post.text,
+        });
+        this.tags.forEach((tag) => {
+          (<FormGroup>this.form.get('tags')).addControl(
+            tag,
+            new FormControl(true)
+          );
+        });
+      });
   }
 
   onChange(event: Event) {
@@ -71,13 +96,20 @@ export class QuestionPageComponent implements OnInit {
   }
 
   onSubmit() {
+    const formData = { ...this.form.value };
+    formData.tags = Object.keys(formData.tags);
+
+    const body = {
+      ...formData,
+      date: new Date(),
+    };
+
     this.postService
-      .createPost({
-        ...this.form.value,
-        date: new Date(),
-      }).pipe(takeUntil(this.destroy))
-      .subscribe((value) => {
-        this.router.navigate(['/home']);
+      .updatePost(this.postId, body)
+      .pipe(takeUntil(this.destroy))
+      .subscribe(() => {
+        this.form.reset();
+        this.router.navigate(['/post-page/', this.postId]);
       });
   }
 
