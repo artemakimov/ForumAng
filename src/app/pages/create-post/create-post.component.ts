@@ -61,7 +61,9 @@ export class CreatePostComponent implements OnInit {
       (<FormGroup>this.form.get('tags')).removeControl(`${checkbox.id}`);
     }
 
-    this.isTagChecked = Boolean(Object.keys(this.form.get('tags').value).length);
+    this.isTagChecked = Boolean(
+      Object.keys(this.form.get('tags').value).length
+    );
   }
 
   public isControlValid(name: string): boolean {
@@ -71,11 +73,10 @@ export class CreatePostComponent implements OnInit {
   }
 
   onSubmit() {
-
     const body = {
       ...this.form.value,
       date: new Date(),
-    }
+    };
 
     this.postService
       .createPost(body)
@@ -86,7 +87,7 @@ export class CreatePostComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.destroy.next( );
+    this.destroy.next();
     this.destroy.complete();
   }
 }

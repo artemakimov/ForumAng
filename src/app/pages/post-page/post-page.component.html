@@ -27,7 +27,7 @@
     <ul>
         <li class="comment" *ngFor="let comment of post?.comments">
             <p class="comment__author">
-                Username
+                {{currentUserEmail}}
             </p>
             <p class="comment__text">
                 {{comment?.text}}

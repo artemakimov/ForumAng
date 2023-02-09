@@ -17,7 +17,6 @@ import { PostService } from 'src/app/core/services/post.service';
   styleUrls: ['./edit-post.component.scss'],
 })
 export class EditPostComponent implements OnInit {
-
   public post: Post;
   public form: FormGroup;
   public isTagChecked = false;
@@ -91,12 +90,13 @@ export class EditPostComponent implements OnInit {
       (<FormGroup>this.form.get('tags')).removeControl(`${checkbox.id}`);
     }
 
-    console.log(checkbox)
-    this.isTagChecked = Boolean(Object.keys(this.form.get('tags').value).length);
+    console.log(checkbox);
+    this.isTagChecked = Boolean(
+      Object.keys(this.form.get('tags').value).length
+    );
   }
 
   public isControlValid(name: string): boolean {
-
     const control = this.form.controls[name];
 
     return control.invalid && control.touched;

@@ -12,18 +12,16 @@ export class HomeComponent implements OnInit {
   public posts: Post[];
   private destroy = new Subject<boolean>();
 
-  constructor(
-    private postService: PostService,
-    private router: Router
-  ) {}
+  constructor(private postService: PostService, private router: Router) {}
 
   ngOnInit(): void {
-    this.postService.getAllPosts()
+    this.postService
+      .getAllPosts()
       .pipe(takeUntil(this.destroy))
       .subscribe((posts) => {
-      this.posts = posts;
-      posts.forEach(console.log)
-    });
+        this.posts = posts;
+        posts.forEach(console.log);
+      });
   }
 
   ngOnDestroy() {
