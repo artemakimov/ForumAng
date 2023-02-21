@@ -104,11 +104,13 @@ export class EditPostComponent implements OnInit {
 
   onSubmit() {
     const formData = { ...this.form.value };
-    formData.tags = Object.keys(formData.tags);
+
+    console.log(formData);
 
     const body = {
       ...formData,
       date: new Date(),
+      tags: Object.keys(formData.tags)
     };
 
     this.postService

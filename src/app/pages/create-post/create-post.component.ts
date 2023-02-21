@@ -76,7 +76,10 @@ export class CreatePostComponent implements OnInit {
     const body = {
       ...this.form.value,
       date: new Date(),
+      tags: Object.keys(this.form.get('tags').value)
     };
+
+    console.log(body);
 
     this.postService
       .createPost(body)

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { Post } from 'src/app/core/models/interfaces/post.interface';
@@ -24,7 +24,7 @@ export class PostPageComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private postService: PostService,
     private formBuilder: FormBuilder,
-    private authServise: AuthService,
+    private authService: AuthService,
   ) {}
 
   ngOnInit(): void {
@@ -37,9 +37,10 @@ export class PostPageComponent implements OnInit {
       .subscribe((post) => {
         this.post = post;
         this.comments = post.comments;
+        console.log('post from component', post);
       });
 
-      this.authServise
+      this.authService
       .getAuthState()
       .pipe(takeUntil(this.destroy))
       .subscribe((user) => {

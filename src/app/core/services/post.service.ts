@@ -17,7 +17,7 @@ export class PostService {
         let res: { [p: string]: Post };
         res = result as unknown as { [key: string]: Post };
         return Object.keys(res).map((id) => {
-          const tags = Object.keys(res[id].tags);
+          const tags = Object.values(res[id].tags);
 
           return {
             id,
@@ -34,7 +34,7 @@ export class PostService {
       .get<Post>(`${environment.apiURL}/posts/${id}.json`)
       .pipe(
         map((post) => {
-          const tags = Object.keys(post.tags);
+          const tags = Object.values(post.tags);
           let comments: Comment[] = [];
 
           if (post.comments) {
